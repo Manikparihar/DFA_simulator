@@ -1,50 +1,15 @@
-# Interactive Deterministic Finite Automaton (DFA) Simulator
-
-A zero-dependency desktop application built in Python (`tkinter`) for constructing, validating, minimizing, and simulating **Deterministic Finite Automata (DFA)** in real time. 
-
-Developed as part of the **CSET302 — Automata Theory and Computability** coursework at **Bennett University, Greater Noida**.
-
----
-
-## 👥 Authors
-* **Shubh Pratap Singh Parihar** (`S24CSEU0941`)
-* **Harshiv Batra** (`S24CSEU1536`)
-
----
-
-## ✨ Key Features
-
-* **Interactive Vector Graph Canvas:**
-  * Double-click anywhere on the canvas to add states (`q0`, `q1`, ...), drag states freely, and double-click a state to toggle its accepting status.
-  * Smooth pan (drag empty canvas), cursor-anchored scroll-wheel zoom, and one-click **Fit-to-View** scaling.
-  * Collision-free quadratic Bezier arcs for bidirectional edges ($q_i \leftrightarrow q_j$) and elevated splines for self-loops.
-  * Right-click context menu for setting start states, toggling accept states, renaming states, and editing/deleting edges.
-  * 40-step deep-copy **Undo** history (`Ctrl+Z`).
-* **Two-Way Synchronized Formal Definition & Transition Table ($\delta$):**
-  * Live display of the formal 5-tuple $M = (Q, \Sigma, \delta, q_0, F)$.
-  * Bidirectional sync: updating any cell in the transition table immediately updates the visual graph, and drawing edges updates the table.
-  * Real-time completeness and determinism validation with visual error rings on incomplete or non-deterministic states.
-* **One-Click Trap State Completion (`+ Trap State`):**
-  * Automatically detects all missing $(q, a) \in Q \times \Sigma$ transitions, creates a non-accepting dead state (`q_dead`) with self-loops on $\Sigma$, and routes every undefined transition to it.
-* **Regular Expression $\rightarrow$ DFA Compiler (`Formula → DFA`):**
-  * Compiles regular expressions supporting union (`|`), Kleene star (`*`), plus (`+`), optional (`?`), grouping (`( )`), and empty string (`ε`).
-  * Implements **Thompson's Construction**, **$\epsilon$-closure Subset Construction**, and **Hopcroft-style Partition Refinement** minimization.
-* **Step-by-Step Tape Simulation & Batch Testing:**
-  * Character-by-character visual tape highlighting consumed, active, and errored symbols alongside a live transition trace and adjustable auto-play speed.
-  * Multi-line **Batch Test** runner supporting inline `: accept` and `: reject` assertions with pass/fail summaries.
-
----
-
-## 🛠️ Tech Stack & Requirements
-
-* **Language:** Python 3.8+
-* **Dependencies:** Standard library only (`tkinter`, `math`, `json`, `re`, `random`) — **no `pip install` packages required**.
-
----
-
-## 🚀 How to Run
-
-1. Clone or download this repository:
-   ```bash
-   git clone [https://github.com/your-username/dfa-simulator.git](https://github.com/your-username/dfa-simulator.git)
-   cd dfa-simulator
+Interactive Deterministic Finite Automaton (DFA) SimulatorA zero-dependency desktop application built in Python (tkinter) for constructing, validating, minimizing, and simulating Deterministic Finite Automata (DFA) in real time.Developed as part of the CSET302 — Automata Theory and Computability coursework at Bennett University, Greater Noida.👥 AuthorsShubh Pratap Singh Parihar — S24CSEU0941Harshiv Batra — S24CSEU1536✨ Key FeaturesInteractive Vector Graph Canvas:Double-click anywhere on the grid canvas to create states (q0, q1, ...), drag states freely, and double-click a state to toggle its accepting status.Smooth panning (drag empty canvas), cursor-anchored scroll-wheel zoom, and one-click Fit (⛶) auto-centering.Collision-free quadratic Bezier arcs for bidirectional transitions ($q_i \leftrightarrow q_j$) and elevated splines for self-loops.40-step deep-copy Undo history (Ctrl+Z).Two-Way Synchronized Formal Definition & Transition Table ($\delta$):Live display of the formal 5-tuple $M = (Q, \Sigma, \delta, q_0, F)$.Bidirectional sync: modifying any cell in the transition table updates the visual graph immediately, and drawing edges updates the table.Real-time completeness and determinism auditing with visual dashed red rings on incomplete or non-deterministic states.One-Click Trap State Completion (+ Trap State):Automatically detects all undefined $(q, a) \in Q \times \Sigma$ transitions, creates a non-accepting dead state (q_dead) with self-loops on $\Sigma$, and routes every missing edge to it.Regular Expression $\rightarrow$ Minimal DFA Compiler (Formula → DFA):Compiles regular expressions supporting union (|), Kleene star (*), plus (+), optional (?), grouping (( )), and empty string ($\varepsilon$).Implements Thompson's Construction, $\varepsilon$-closure Subset Construction, and Hopcroft-style Partition Refinement minimization.Step-by-Step Tape Simulation & Batch Testing:Character-by-character visual tape highlighting consumed, active, and errored symbols alongside a live execution trace and adjustable auto-play speed.Multi-line Batch Test suite supporting inline : accept / : reject assertions with pass/fail summaries.🚀 Step-by-Step Instructions to Run This ProgramYou do not need to install any external packages (pip install is not required)—everything runs using standard Python.Step 1: Verify Python is Installed on Your PCOpen your terminal or command prompt:Windows: Press Win + R, type cmd, and press Enter.macOS: Press Cmd + Space, type Terminal, and press Enter.Linux: Press Ctrl + Alt + T.Check your Python version by running:python --version
+(If that fails on Windows, try py --version. On macOS/Linux, try python3 --version.)If you see a version number (such as Python 3.10 or higher), move to Step 2.If Python is not installed:Download the latest Python 3 installer from python.org/downloads.Windows Users (Crucial): On the first screen of the installer, check "Add python.exe to PATH" at the bottom before clicking Install Now.Step 2: Get the Project CodeOption A: Clone via Gitgit clone https://github.com/Manikparihar/DFA_simulator.git
+cd DFA_simulator
+Option B: Download ZIP from GitHubVisit https://github.com/Manikparihar/DFA_simulator.Click the green <> Code button at the top and select Download ZIP.Extract the ZIP folder to your Desktop (e.g., Desktop/DFA_simulator-main).Step 3: Launch the ApplicationMethod 1: Run from Terminal / Command PromptOpen your Command Prompt / Terminal inside the DFA_simulator folder:cd DFA_simulator
+Start the simulator using the command that worked in Step 1:python dfa_simulator.py
+or on Windows:py dfa_simulator.py
+or on macOS/Linux:python3 dfa_simulator.py
+The DFA Simulator desktop window will launch immediately.Method 2: Run in Visual Studio Code (VS Code)Open VS Code, click File → Open Folder..., and select the DFA_simulator folder.Click dfa_simulator.py in the Explorer sidebar to open it.Click the Play button (▶) in the top-right corner of the editor.🎮 Quick Walkthrough & ControlsWhen the app opens, a sample DFA ("Strings over {0,1} ending with 01") is pre-loaded so you can test it immediately:ActionHow to PerformTest a StringType an input (e.g., 1101) in the Simulation bar and click ▶ Auto-play or Step ⏭Load PresetsUse the Load preset DFA… dropdown in the top-right cornerStart FreshClick 🗑 Clear on the top toolbarAdd StateDouble-click empty canvas space or click + Add StateAdd TransitionClick → Add Transition $\rightarrow$ click source state $\rightarrow$ click target state (same state = self-loop)Toggle Accept StateDouble-click a state or toggle its Acc checkbox in the $\delta$-tableSet Start StateRight-click a state $\rightarrow$ Set as start state, or select its Start radio button in the tableRename StateClick the state's button (q0 ✎) in the $\delta$-table, use ✎ Rename State, or right-click the stateComplete Partial DFAClick + Trap State to auto-create q_dead and route all missing transitionsCompile RegexOpen the Formula → DFA tab, enter a regex (e.g., `(0Batch Test StringsOpen the Batch Test tab, enter one string per line (optionally with : accept / : reject), and click ▶ Run AllPan, Zoom & FitDrag empty canvas to pan; scroll mouse wheel to zoom; click ⛶ Fit to centerUndoPress Ctrl+Z or click ↶ Undo🛠️ Troubleshooting'python' is not recognized as an internal or external command:
+Re-run the Python installer, select Modify, and check "Add Python to environment variables / PATH", or run py dfa_simulator.py instead.ModuleNotFoundError: No module named 'tkinter' (Linux only):
+Install the system Tkinter package:sudo apt-get install python3-tk
+Nodes appear clipped or off-screen after generating a large DFA:
+Click the ⛶ Fit button in the toolbar to automatically scale and center the entire graph.📂 Repository StructureDFA_simulator/
+├── dfa_simulator.py      # Complete standalone Python/Tkinter application
+└── README.md             # Step-by-step setup & usage documentation
+📄 LicenseThis project is open-source and available under the MIT License.
